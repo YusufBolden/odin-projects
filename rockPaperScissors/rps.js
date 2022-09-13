@@ -2,12 +2,44 @@ let computerOptions = ["Rock", "Paper", "Scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
-function computerPlay() {
+const resultDiv = document.querySelector("#result");
+const playerScoreDiv = document.querySelector("#playerScore");
+const computerScoreDiv = document.querySelector("#computerScore");
+const WINNING_SCORE = 5;
+
+function computerChoice() {
   return computerOptions[Math.floor(Math.random() * computerOptions.length)];
 }
+
+console.log(computerChoice());
 
 function playRound(playerSelection, computerSelection) {
   //convert input to lower case
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
+
+  if (
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "scissors" && computerSelection == "paper") ||
+    (playerSelection == "paper" && computerSelection == "rock")
+  ) {
+    resultDiv.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+    playerScore++;
+  } else if (playerSelection == computerSelection) {
+    resultDiv.textContent = `Draw both players chose ${playerSelection}`;
+  } else {
+    resultDiv.textContent = `You lose ${computerSelection} beats ${playerSelection}`;
+    computerScore++;
+  }
+
+  playerScoreDiv.textContent = `Player score: ${playerScore}`;
+  computerScoreDiv.textContent = `Computer score: ${computerScore}`;
+
+  if (playerScore == WINNING_SCORE) {
+    resultDiv.textContent = "You win";
+    gameOver();
+  } else if (computerScore == WINNING_SCORE) {
+    resultDiv.textContent = "You lose";
+    gameOver();
+  }
 }
