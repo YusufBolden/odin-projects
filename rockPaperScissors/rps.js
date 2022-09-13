@@ -7,11 +7,9 @@ const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
 const WINNING_SCORE = 5;
 
-function computerChoice() {
+function computerPlay() {
   return computerOptions[Math.floor(Math.random() * computerOptions.length)];
 }
-
-console.log(computerChoice());
 
 function playRound(playerSelection, computerSelection) {
   //convert input to lower case
@@ -42,4 +40,21 @@ function playRound(playerSelection, computerSelection) {
     resultDiv.textContent = "You lose";
     gameOver();
   }
+}
+
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach((button) => {
+  button.addEventListener("click", clickBtn);
+});
+
+function clickBtn(e) {
+  let playerChoice = e.target.id;
+  let computerChoice = computerPlay();
+  playRound(playerChoice, computerChoice);
+}
+
+function gameOver() {
+  buttons.forEach((button) => {
+    button.removeEventListener("click", clickBtn);
+  });
 }
