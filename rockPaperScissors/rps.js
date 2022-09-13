@@ -6,6 +6,7 @@ const resultDiv = document.querySelector("#result");
 const playerScoreDiv = document.querySelector("#playerScore");
 const computerScoreDiv = document.querySelector("#computerScore");
 const WINNING_SCORE = 5;
+const resetBtn = document.querySelector("#reset");
 
 function computerPlay() {
   return computerOptions[Math.floor(Math.random() * computerOptions.length)];
@@ -34,10 +35,10 @@ function playRound(playerSelection, computerSelection) {
   computerScoreDiv.textContent = `Computer score: ${computerScore}`;
 
   if (playerScore == WINNING_SCORE) {
-    resultDiv.textContent = "You win";
+    resultDiv.textContent = "PLAYER WINS!!!";
     gameOver();
   } else if (computerScore == WINNING_SCORE) {
-    resultDiv.textContent = "You lose";
+    resultDiv.textContent = "COMPUTER WINS!!!";
     gameOver();
   }
 }
@@ -58,3 +59,5 @@ function gameOver() {
     button.removeEventListener("click", clickBtn);
   });
 }
+
+resetBtn.addEventListener("click", () => location.reload());

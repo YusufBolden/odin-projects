@@ -53,6 +53,15 @@ img:hover{
     font-size: 30px;
 }
 
+#reset {
+    width: 120px;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #0b5f16;
+    color: #50d46a;
+    font-size: 20px;
+}
+
 .result-wrapper{
     display: flex;
     flex-direction: column;
