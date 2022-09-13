@@ -25,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
     resultDiv.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
     playerScore++;
   } else if (playerSelection == computerSelection) {
-    resultDiv.textContent = `Draw both players chose ${playerSelection}`;
+    resultDiv.textContent = `TIE - both players chose ${playerSelection}`;
   } else {
     resultDiv.textContent = `You lose ${computerSelection} beats ${playerSelection}`;
     computerScore++;
